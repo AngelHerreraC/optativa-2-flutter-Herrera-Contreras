@@ -1,4 +1,4 @@
-class Router {
+class RouterS {
   static const login = "login";
 
   static const categories = "categories";
