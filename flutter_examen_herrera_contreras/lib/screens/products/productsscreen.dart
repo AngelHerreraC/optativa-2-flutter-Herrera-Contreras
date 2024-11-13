@@ -11,7 +11,7 @@ class CategoryProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const customAppBar(title: "Porductos por categoria"),
+      appBar: const customAppBar(title: "Productos por categoria"),
       body: Column(
         children: [
           Expanded(child: productLayout(category: category)),

@@ -4,6 +4,7 @@ import 'package:flutter_examen_herrera_contreras/modules/categories/useCase/cate
 import 'package:flutter_examen_herrera_contreras/modules/products/useCase/productsusecase.dart';
 import 'package:flutter_examen_herrera_contreras/screens/categories/categoryscreen.dart';
 import 'package:flutter_examen_herrera_contreras/screens/login/loginscreen.dart';
+import 'package:flutter_examen_herrera_contreras/screens/products/productsscreen.dart';
 import 'package:flutter_examen_herrera_contreras/services/auth.dart';
 import 'router.dart';
 
@@ -16,7 +17,7 @@ class Routes {
     },
     RouterS.products: (context){
       final ProductUseCase productUseCase = ProductUseCase(AuthService());
-      return Center(child: Text("No ha sido implementado aun.."));
+      return CategoryProductsScreen(category: ModalRoute.of(context)!.settings.arguments as String);
     }
   };
 }

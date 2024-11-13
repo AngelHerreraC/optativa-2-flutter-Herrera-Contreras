@@ -19,7 +19,7 @@ class ProductRepository {
     Connection connection = Connection();
     final response = await connection.get(url, headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer $token', // Incluye el token en el encabezado
+      'Authorization': 'Bearer $token', 
     });
 
     List productsJson = response['products'];

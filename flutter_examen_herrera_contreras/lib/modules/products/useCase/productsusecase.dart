@@ -4,8 +4,7 @@ import 'package:flutter_examen_herrera_contreras/services/auth.dart';
 
 class ProductUseCase {
   final ProductRepository repository;
-
-  // Constructor que recibe AuthService y lo pasa a ProductRepository
+  
   ProductUseCase(AuthService auth) : repository = ProductRepository(auth);
 
   Future<List<Product>> getProductsByCategory(String category) async {
