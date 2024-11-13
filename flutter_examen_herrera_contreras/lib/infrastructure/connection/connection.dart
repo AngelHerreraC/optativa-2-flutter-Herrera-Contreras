@@ -34,8 +34,7 @@ class Connection implements IConnection {
   }
 
   @override
-  Future<T> post<T, D>(String url, D data,
-      {Map<String, String>? headers}) async {
+  Future<T> post<T, D>(String url, D data, {Map<String, String>? headers}) async {
     final response = await http.post(
       Uri.parse(url),
       headers: headers,
@@ -50,7 +49,7 @@ class Connection implements IConnection {
   }
   
   @override
-  Future<T> get<T, D>(String url, D data,
+  Future<T> get<T>(String url,
       {Map<String, String>? headers}) async {
     final response = await http.get(
       Uri.parse(url),

@@ -11,7 +11,7 @@ abstract class IConnection {
     throw UnimplementedError();
   }
 
-  get<T, D>(String url, D data, {Map<String, String>? headers}) async {
+  get<T>(String url, {Map<String, String>? headers}) async {
     throw UnimplementedError();
   }
 }
