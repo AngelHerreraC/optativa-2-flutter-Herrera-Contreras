@@ -16,7 +16,6 @@ class Routes {
       return categoryScreen(usecase: catUseCase);
     },
     RouterS.products: (context){
-      final ProductUseCase productUseCase = ProductUseCase(AuthService());
       return CategoryProductsScreen(category: ModalRoute.of(context)!.settings.arguments as String);
     }
   };
