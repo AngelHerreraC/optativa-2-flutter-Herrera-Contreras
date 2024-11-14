@@ -12,30 +12,40 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10)
-      ),
-      elevation: 4,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(product.thumbnail),
-          Center(child: Text(
-              product.title,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              textAlign: TextAlign.center,
-            )
-          ),
-          Center(child: customButton(text: "Details", onClick: (){
-            Navigator.push(
-              context, 
-              MaterialPageRoute(
-                builder: (context) => productDetailScreen(product: this.product),
-              )
-            );
-          })
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.network(product.thumbnail, height: 100,),
+            Center(
+              child: Text(
+                product.title,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(height: 2),
+            Align(
+              alignment: Alignment.center,
+              child: SizedBox(
+                width: double .infinity, 
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => productDetailScreen(product: product),
+                      ),
+                    );
+                  },
+                  child: const Text("Details"),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

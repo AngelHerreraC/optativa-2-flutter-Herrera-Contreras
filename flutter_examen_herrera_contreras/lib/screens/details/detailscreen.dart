@@ -10,7 +10,7 @@ class productDetailScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: product.id.toString()),
+      appBar: customAppBar(title: "${product.id}.-${product.title}"),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
