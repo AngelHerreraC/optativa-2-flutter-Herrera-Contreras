@@ -41,7 +41,7 @@ class categoryScreen extends StatelessWidget{
 
         }
       
-      return Center(child: Text("No hay categorias"));
+        return Center(child: Text("No hay categorias"));
       
       }),
     );

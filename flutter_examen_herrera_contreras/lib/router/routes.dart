@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_examen_herrera_contreras/modules/categories/domain/repository/categoriesrepository.dart';
 import 'package:flutter_examen_herrera_contreras/modules/categories/useCase/categoryusecase.dart';
 import 'package:flutter_examen_herrera_contreras/modules/products/useCase/productsusecase.dart';
+import 'package:flutter_examen_herrera_contreras/screens/cart/cart.dart';
 import 'package:flutter_examen_herrera_contreras/screens/categories/categoryscreen.dart';
 import 'package:flutter_examen_herrera_contreras/screens/login/loginscreen.dart';
 import 'package:flutter_examen_herrera_contreras/screens/products/productsscreen.dart';
@@ -17,6 +18,7 @@ class Routes {
     },
     RouterS.products: (context){
       return CategoryProductsScreen(category: ModalRoute.of(context)!.settings.arguments as String);
-    }
+    },
+    RouterS.cart: (context) => cartScreen()
   };
 }

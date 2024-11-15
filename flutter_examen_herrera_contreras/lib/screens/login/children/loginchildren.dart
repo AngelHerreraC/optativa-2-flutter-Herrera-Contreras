@@ -7,10 +7,12 @@ import 'package:flutter_examen_herrera_contreras/screens/categories/categoryscre
 import 'package:flutter_examen_herrera_contreras/services/auth.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/mybutton.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/mytextfield.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class loginChildren extends StatelessWidget{
-  Future<void> _clearCart() async {
-    //clearcart
+  Future<void> resetCart() async {
+    final stored = await SharedPreferences.getInstance();
+    await stored.remove('cart');
   }
 
   @override
@@ -28,6 +30,8 @@ class loginChildren extends StatelessWidget{
           final String user = usernameController.text;
           final String password = passwordController.text;
 
+          resetCart();
+
           final loginUseCase usecase = loginUseCase();
           try{
             await usecase.call(userCredentials(username: user, password: password));
@@ -36,7 +40,7 @@ class loginChildren extends StatelessWidget{
               MaterialPageRoute(builder: (context) => categoryScreen(usecase: categoryUseCase(categoriesRepository(AuthService())))),
             );
           }catch(e){
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Credenciales incorrectas')));
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Credenciales incorrectas')));
           }
 
 

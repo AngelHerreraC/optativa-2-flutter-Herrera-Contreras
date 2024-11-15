@@ -41,22 +41,28 @@ class productLayoutState extends State<productLayout>{
 
       if (snapshot.hasData) {
         final productsData = snapshot.data!;
-        return GridView.builder(
-          padding: const EdgeInsets.all(10),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 0.75,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-          ),
-          itemCount: productsData.length,
-          itemBuilder: (context, index){
-            return ProductCard(product: productsData[index]);
-          },
-        );
+        if(productsData.isNotEmpty){
+          return GridView.builder(
+                padding: const EdgeInsets.all(10),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.75,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                ),
+                itemCount: productsData.length,
+                itemBuilder: (context, index) {
+                  return ProductCard(product: productsData[index]);
+                },
+              );
+        }
+        else{
+          return Center(child: Text("No hay productos de categoria: ${widget.category}"));
+        }
+        
       }
 
-      return Center(child: Text("No hay productos de categoria: $category"));
+      return Center(child: Text("No hay productos de categoria: ${widget.category}"));
 
 
     });
