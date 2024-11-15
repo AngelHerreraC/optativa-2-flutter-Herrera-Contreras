@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_examen_herrera_contreras/modules/products/domain/dto/product.dart';
+import 'package:flutter_examen_herrera_contreras/router/router.dart';
+import 'package:flutter_examen_herrera_contreras/screens/purchasecomplete/purchasescreen.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/myappbar.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/mybutton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -69,8 +71,10 @@ class cartScreenState extends State<cartScreen>{
             ),
             trailing: customButton(text: "Remover", onClick: ()=>(removeItem(index))),),);
           },))
-        ],
-      )
+        ,Text("Total: ${finalPrice}"),
+        customButton(text: "Finalizar compra",onClick: () =>{Navigator.pushNamed(context, RouterS.receipt, arguments:purchaseArgs(cartItems.length, finalPrice))}),],
+      ),
+      
     );
   }
 }

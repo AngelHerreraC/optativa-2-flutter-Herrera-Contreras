@@ -8,4 +8,6 @@ class RouterS {
   static const products = "products";
 
   static const cart = "cart";
+
+  static const receipt = "receipt";
 }
