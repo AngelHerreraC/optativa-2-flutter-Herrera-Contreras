@@ -7,6 +7,7 @@ import 'package:flutter_examen_herrera_contreras/screens/categories/categoryscre
 import 'package:flutter_examen_herrera_contreras/screens/login/loginscreen.dart';
 import 'package:flutter_examen_herrera_contreras/screens/products/productsscreen.dart';
 import 'package:flutter_examen_herrera_contreras/screens/purchasecomplete/purchasescreen.dart';
+import 'package:flutter_examen_herrera_contreras/screens/seenproducts/seenproducts.dart';
 import 'package:flutter_examen_herrera_contreras/services/auth.dart';
 import 'router.dart';
 
@@ -24,6 +25,10 @@ class Routes {
     RouterS.receipt: (context) {
       return purchaseScreen(purchaseargs: ModalRoute.of(context)!.settings.arguments as purchaseArgs);
     },
+    RouterS.search: (context) {
+      return const LoginScreen();
+    },
+    RouterS.seen: (context) => seenScreen(),
 
   };
 }

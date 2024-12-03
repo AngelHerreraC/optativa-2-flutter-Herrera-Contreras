@@ -14,14 +14,18 @@ class productDetailScreen extends StatelessWidget{
 
   Future<void> addToCart(BuildContext context) async {
     SharedPreferences stored = await SharedPreferences.getInstance();
+    String? seen = stored.getString('seen');
     String? cart = stored.getString('cart');
     List<dynamic> cartData = cart != null ? jsonDecode(cart) : [];
     if (cartData.length < 7) {
       cartData.add(this.product.toJson());
     } else {
-      ScaffoldMessenger.of(context).showSnackBar( const SnackBar(content: Text('Solo puedes agregar 7 productos al carrito.')),);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Solo puedes agregar 7 productos al carrito.')),);
       return;
     }
+    List<dynamic> seenData = seen != null ? jsonDecode(seen) : [];
+    seenData.add(this.product.toJson());
+    stored.setString('seen', jsonEncode(seenData));
 
     await stored.setString('cart', jsonEncode(cartData));
     ScaffoldMessenger.of(context).showSnackBar(
@@ -46,8 +50,11 @@ class productDetailScreen extends StatelessWidget{
             const Spacer(),
             customButton(text: "Ir al carrito", onClick: () =>{
               Navigator.pushNamed(context, RouterS.cart)
-            })
-
+            }),
+            customButton(
+              text: "Ir al historial",
+              onClick: () => {Navigator.pushNamed(context, RouterS.seen)}
+            )
           ],
         ),
         ),
