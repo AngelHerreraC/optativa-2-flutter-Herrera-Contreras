@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class customNavBar extends StatelessWidget{
-
+  
   int currentIndex = 0;
   void Function(int) onPressed;
 

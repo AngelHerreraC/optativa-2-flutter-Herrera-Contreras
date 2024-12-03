@@ -12,9 +12,16 @@ class productDetailScreen extends StatelessWidget{
 
   productDetailScreen({super.key, required this.product});
 
-  Future<void> addToCart(BuildContext context) async {
+  Future<void> addToHistory(BuildContext context) async {
     SharedPreferences stored = await SharedPreferences.getInstance();
     String? seen = stored.getString('seen');
+    List<dynamic> seenData = seen != null ? jsonDecode(seen) : [];
+    seenData.add(this.product.toJson());
+    await stored.setString('seen', jsonEncode(seenData));
+  }
+
+  Future<void> addToCart(BuildContext context) async {
+    SharedPreferences stored = await SharedPreferences.getInstance();
     String? cart = stored.getString('cart');
     List<dynamic> cartData = cart != null ? jsonDecode(cart) : [];
     if (cartData.length < 7) {
@@ -23,10 +30,7 @@ class productDetailScreen extends StatelessWidget{
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Solo puedes agregar 7 productos al carrito.')),);
       return;
     }
-    List<dynamic> seenData = seen != null ? jsonDecode(seen) : [];
-    seenData.add(this.product.toJson());
-    stored.setString('seen', jsonEncode(seenData));
-
+    
     await stored.setString('cart', jsonEncode(cartData));
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Producto agregado al carrito.')),
@@ -35,6 +39,7 @@ class productDetailScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    addToHistory(context);
     return Scaffold(
       appBar: customAppBar(title: "${product.id}.-${product.title}"),
       body: Padding(
