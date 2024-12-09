@@ -2,9 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_examen_herrera_contreras/modules/products/domain/dto/product.dart';
-import 'package:flutter_examen_herrera_contreras/router/router.dart';
 import 'package:flutter_examen_herrera_contreras/screens/details/detailscreen.dart';
-import 'package:flutter_examen_herrera_contreras/screens/purchasecomplete/purchasescreen.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/myappbar.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/mybutton.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/mynavigationbar.dart';
@@ -68,7 +66,7 @@ class seenScreenState extends State<seenScreen> {
                         trailing: customButton(
                             text: "Ver producto",
                             onClick: () => (Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => productDetailScreen(product: item))
+                              context, MaterialPageRoute(builder: (context) => productDetailScreen(product: item, reviews: seenItems[index]['reviews']))
                         ))),
                       ),
                     );

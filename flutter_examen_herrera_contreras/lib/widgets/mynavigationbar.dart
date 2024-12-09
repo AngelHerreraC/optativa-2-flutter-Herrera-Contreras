@@ -3,6 +3,7 @@ import 'package:flutter_examen_herrera_contreras/modules/categories/domain/repos
 import 'package:flutter_examen_herrera_contreras/modules/categories/useCase/categoryusecase.dart';
 import 'package:flutter_examen_herrera_contreras/screens/cart/cart.dart';
 import 'package:flutter_examen_herrera_contreras/screens/categories/categoryscreen.dart';
+import 'package:flutter_examen_herrera_contreras/screens/profile/profilescreen.dart';
 import 'package:flutter_examen_herrera_contreras/screens/search/searchscreen.dart';
 import 'package:flutter_examen_herrera_contreras/screens/seenproducts/seenproducts.dart';
 import 'package:flutter_examen_herrera_contreras/services/auth.dart';
@@ -13,7 +14,7 @@ class customNavBar extends StatelessWidget{
   int currentIndex = 0;
   BuildContext context;
   void onPressed(int x){
-    final List<Widget> screens = [categoryScreen(usecase: catUseCase), searchScreen(), seenScreen(), cartScreen()];
+    final List<Widget> screens = [categoryScreen(usecase: catUseCase), searchScreen(), seenScreen(), cartScreen(), Profilescreen()];
     Navigator.push(context, MaterialPageRoute(builder: (context) => screens[x]));
   }
 

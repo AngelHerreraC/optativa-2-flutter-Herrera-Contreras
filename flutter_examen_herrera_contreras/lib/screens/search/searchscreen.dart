@@ -59,7 +59,7 @@ class searchScreenState extends State<searchScreen>{
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                            productDetailScreen(product: product),
+                                            productDetailScreen(product: product, reviews: results[index]['rev'],),
                                         ),
                                     );
                                 },

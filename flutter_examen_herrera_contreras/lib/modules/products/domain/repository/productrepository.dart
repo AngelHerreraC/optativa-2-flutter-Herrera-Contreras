@@ -1,5 +1,6 @@
 import 'package:flutter_examen_herrera_contreras/infrastructure/connection/connection.dart';
 import 'package:flutter_examen_herrera_contreras/modules/products/domain/dto/product.dart';
+import 'package:flutter_examen_herrera_contreras/modules/reviews/domain/dto/review.dart';
 import 'package:flutter_examen_herrera_contreras/services/auth.dart';
 
 
@@ -24,5 +25,41 @@ class ProductRepository {
 
     List productsJson = response['products'];
     return productsJson.map((item) => Product.fromJson(item)).toList();
+  }
+
+  Future<Product> fetchProductByID(int id) async {
+    String url = "https://dummyjson.com/products/$id";
+
+    final token = await auth.getToken();
+    if (token == null) {
+      throw Exception('Token not found.');
+    }
+
+    Connection connection = Connection();
+    final response = await connection.get(url, headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+
+    Product prod = Product.fromJson(response);
+    return prod;
+  }
+
+  Future<List<Review>> fetchReviewsByProductID(int id) async {
+    String url = "https://dummyjson.com/products/$id";
+
+    final token = await auth.getToken();
+    if (token == null) {
+      throw Exception('Token not found.');
+    }
+
+    Connection connection = Connection();
+    final response = await connection.get(url, headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+
+    List reviews = response['reviews'];
+    return reviews.map((item) => Review.fromJson(item)).toList();
   }
 }

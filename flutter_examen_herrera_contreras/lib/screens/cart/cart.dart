@@ -48,11 +48,6 @@ class cartScreenState extends State<cartScreen>{
     final stored = await SharedPreferences.getInstance();
     stored.setString('cart', json.encode(cartItems));
   }
-
-  void doNothing(int x){
-
-  }
-
   @override
   void initState() {
     getCartItems();
@@ -63,7 +58,7 @@ class cartScreenState extends State<cartScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const customAppBar(title: "Carrito"),
-      bottomNavigationBar: customNavBar(currentIndex: 2, context: context),
+      bottomNavigationBar: customNavBar(currentIndex: 3, context: context),
       body: cartItems.isEmpty ? const Center(child: Text("El carrito esta vacio")) 
       :
       Column(
