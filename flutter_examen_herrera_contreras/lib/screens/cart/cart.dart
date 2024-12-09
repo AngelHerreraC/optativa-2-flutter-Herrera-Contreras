@@ -63,7 +63,7 @@ class cartScreenState extends State<cartScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const customAppBar(title: "Carrito"),
-      bottomNavigationBar: customNavBar(currentIndex: 2, onPressed: doNothing),
+      bottomNavigationBar: customNavBar(currentIndex: 2, context: context),
       body: cartItems.isEmpty ? const Center(child: Text("El carrito esta vacio")) 
       :
       Column(

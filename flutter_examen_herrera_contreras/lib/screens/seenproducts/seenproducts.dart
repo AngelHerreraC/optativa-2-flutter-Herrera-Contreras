@@ -42,13 +42,11 @@ class seenScreenState extends State<seenScreen> {
     super.initState();
   }
 
-  void doNothing(int x) {}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const customAppBar(title: "Historial"),
-      bottomNavigationBar: customNavBar(currentIndex: 1, onPressed: doNothing),
+      bottomNavigationBar: customNavBar(currentIndex: 2, context: context),
       body: seenItems.isEmpty
           ? const Center(child: Text("No se han visto productos"))
           : Column(

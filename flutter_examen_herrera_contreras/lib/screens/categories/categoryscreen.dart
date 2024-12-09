@@ -9,17 +9,15 @@ import 'package:flutter_examen_herrera_contreras/widgets/mynavigationbar.dart';
 
 class categoryScreen extends StatelessWidget{
   final categoryUseCase usecase;
-  const categoryScreen({super.key, required this.usecase});
-
-  void doNothing(int x) {}
+  final List<Widget> screens = [];
+  categoryScreen({super.key, required this.usecase});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const customAppBar(title: "Categorias"),
-      bottomNavigationBar: customNavBar(currentIndex: 1, onPressed: doNothing),
+      bottomNavigationBar: customNavBar(currentIndex: 0, context: context),
       body: FutureBuilder(future: usecase.execute(), builder: (context, snapshot){
-
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         }
