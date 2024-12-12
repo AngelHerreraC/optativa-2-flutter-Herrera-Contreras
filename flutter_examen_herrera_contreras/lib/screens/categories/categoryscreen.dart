@@ -5,17 +5,19 @@ import 'package:flutter_examen_herrera_contreras/modules/categories/useCase/cate
 import 'package:flutter_examen_herrera_contreras/router/router.dart';
 import 'package:flutter_examen_herrera_contreras/router/routes.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/myappbar.dart';
+import 'package:flutter_examen_herrera_contreras/widgets/mynavigationbar.dart';
 
 class categoryScreen extends StatelessWidget{
   final categoryUseCase usecase;
-  const categoryScreen({super.key, required this.usecase});
+  final List<Widget> screens = [];
+  categoryScreen({super.key, required this.usecase});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const customAppBar(title: "Categorias"),
+      bottomNavigationBar: customNavBar(currentIndex: 0, context: context),
       body: FutureBuilder(future: usecase.execute(), builder: (context, snapshot){
-
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         }

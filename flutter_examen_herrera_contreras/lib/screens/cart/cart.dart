@@ -6,6 +6,7 @@ import 'package:flutter_examen_herrera_contreras/router/router.dart';
 import 'package:flutter_examen_herrera_contreras/screens/purchasecomplete/purchasescreen.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/myappbar.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/mybutton.dart';
+import 'package:flutter_examen_herrera_contreras/widgets/mynavigationbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class cartScreen extends StatefulWidget{
@@ -47,7 +48,6 @@ class cartScreenState extends State<cartScreen>{
     final stored = await SharedPreferences.getInstance();
     stored.setString('cart', json.encode(cartItems));
   }
-
   @override
   void initState() {
     getCartItems();
@@ -58,6 +58,7 @@ class cartScreenState extends State<cartScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const customAppBar(title: "Carrito"),
+      bottomNavigationBar: customNavBar(currentIndex: 3, context: context),
       body: cartItems.isEmpty ? const Center(child: Text("El carrito esta vacio")) 
       :
       Column(

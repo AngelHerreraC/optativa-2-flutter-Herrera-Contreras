@@ -15,6 +15,11 @@ class loginChildren extends StatelessWidget{
     await stored.remove('cart');
   }
 
+  Future<void> resetSeen() async {
+    final stored = await SharedPreferences.getInstance();
+    await stored.remove('seen');
+  }
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController usernameController = TextEditingController();
@@ -31,6 +36,7 @@ class loginChildren extends StatelessWidget{
           final String password = passwordController.text;
 
           resetCart();
+          resetSeen();
 
           final loginUseCase usecase = loginUseCase();
           try{
