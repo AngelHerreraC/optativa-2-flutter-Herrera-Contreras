@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_examen_herrera_contreras/infrastructure/connection/connection.dart';
 import 'package:flutter_examen_herrera_contreras/modules/products/domain/dto/product.dart';
 import 'package:flutter_examen_herrera_contreras/screens/details/detailscreen.dart';
+import 'package:flutter_examen_herrera_contreras/screens/products/children/card.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/myappbar.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/mybutton.dart';
 import 'package:flutter_examen_herrera_contreras/widgets/mynavigationbar.dart';
@@ -52,18 +53,7 @@ class searchScreenState extends State<searchScreen>{
                         itemCount: results.length,
                         itemBuilder: (context, index){
                             Product product = Product.fromJson(results[index]);
-                            return ListTile(
-                                title: Text(product.title),
-                                onTap: (){
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                            productDetailScreen(product: product, reviews: results[index]['rev'],),
-                                        ),
-                                    );
-                                },
-                            );
+                            return ProductCard(product: product);
                         },
                     )
                     )
